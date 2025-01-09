@@ -2,13 +2,14 @@
 This project is created with Java Language and Spring Boot Framework and hosted on AWS(With API Gateway, Lambda(Serverless) and Cloudfront).
 
 ## Available APIs
-1. GET - /ping - Returns "Hello, World!" if the application is successfully running
-2. GET - /api/v1/next-tracking-number - Generated and returns a tracking number and created timestamp. The tracking number is generated based on following method
-        a. Current Time in ms + (Random Number * 1000).
-        b. Converting the value from Step a to Base 36, this is done to be able to represent it in a compact alphanumeric format, reducing the size of the ID.
-        c. If the value from Step b has a length of more than 16 characters, it is truncated to 16 characters length.
-        d. Now to ensure the uniqueness we add Origin Country ID + Destination Country ID + value from Step c + Weight from API Request Parameters.
-        e. Finally, all the case of all characters are changed to Uppercase, length is truncated to 16 characters length and any character other than A-Z and 0-9 are replaced with 'X'.
+1. GET - /ping - Returns "Hello, World!" if the application is successfully running  
+2. GET - /api/v1/next-tracking-number - Generates and returns a tracking number and created timestamp. The tracking number is generated based on the following method:  
+    a. Current Time in ms + (Random Number * 1000).  
+    b. Converting the value from Step a to Base 36, this is done to represent it in a compact alphanumeric format, reducing the size of the ID.  
+    c. If the value from Step b has a length of more than 16 characters, it is truncated to 16 characters length.  
+    d. To ensure uniqueness, Origin Country ID + Destination Country ID + value from Step c + Weight from API Request Parameters are added.  
+    e. Finally, all characters are converted to uppercase, the length is truncated to 16 characters, and any character other than A-Z and 0-9 is replaced with 'X'.
+
 
 ## application.properties
 1. Currently the configuration is set to run on port 9091, please change the port based on your usage(file location - src\main\resources\application.properties).
